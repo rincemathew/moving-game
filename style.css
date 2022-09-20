@@ -1,0 +1,67 @@
+.main-div {
+    position: relative;
+    border: black 2px solid;
+    height: 400px;
+    width: 400px;
+}
+
+.A1 {
+    position: absolute;
+    top: 0%;
+}
+
+.A2 {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.A3 {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+
+.B1 {
+    position: absolute;
+    top: 50%;
+    transform: translate(-0%, -50%);
+}
+
+.B2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.B3 {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(-0%, -50%);
+}
+
+.C1 {
+    position: absolute;
+    bottom: 0;
+}
+
+.C2 {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+}
+
+.C3 {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+}
+
+.button {
+    cursor: pointer;
+}
