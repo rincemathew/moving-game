@@ -2,8 +2,14 @@
 var colorBlue = [];
 var colorGreen = [];
 var colorList = []
+answerList = [['A1','A2','A3'],['B1','B2','B3'],['C1','C2','C3'],['A1','B1','C1'],['A2','B2','C2'],['A3','B3','C3'],['A1','B2','C3'],['C1','B2','A3']]
 // var countColor = 1;
 var player = true;
+
+
+
+
+
 
 //What happens when click the button
 function buttonEvent(id) {
@@ -23,22 +29,25 @@ function firstEvent(id) {
         player = !player
         colorBlue.push(id)
         colorList.push(id)
-        console.log(colorBlue)
-        gameOver();
+        gameOver(colorBlue);
     } else {
         document.getElementById(id).style.backgroundColor="#00cc00";
         player = !player
         colorGreen.push(id)
         colorList.push(id)
-        console.log(colorGreen)
-        console.log(colorList)
-        gameOver();
+        gameOver(colorGreen);
     }
 }
 
 //check the game is finished or not
-function gameOver() {
-    // console.log(colorBlue)
+function gameOver(color) {
+    for (var i=0; i<answerList.length; i++) {
+        // console.log(answerList[i])
+        console.log(player)
+        if (answerList[i].every(item => color.includes(item))) {
+            alert('game over')
+        }
+    }
 }
 
 
