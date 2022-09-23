@@ -9,12 +9,13 @@
 </head>
 <body>
     <h1>Moving Game</h1>
-    <p>Player One blue</p>
-    <p>Player Two Green</p>
-    <p>Selected Red</p>
-    <button onclick="reset()">reset</button>
+    <p>Player One <span><button style="background-color: #0066ff;">Blue</button></span></p>
+    <p>Player Two <span><button style="background-color: #00cc00;">Green</button></span></p>
+    <p>Selected <span><button style="background-color: #ff0000;">Red</button></span></p>
+    <p>Once completed 3 clicks per two players then select the item and click the next move</p>
+    <button style="margin-bottom: 10px;" onclick="reset()">reset</button>
     <div style="display: flex; justify-content: center;">
-        <div class="main-div">
+        <div id="main-div" class="main-div">
             <button class="button A1" id="A1" onclick="buttonEvent(this.id)">A1</button>
             <button class="button A2" id="A2" onclick="buttonEvent(this.id)">A2</button>
             <button class="button A3" id="A3" onclick="buttonEvent(this.id)">A3</button>
@@ -24,10 +25,13 @@
             <button class="button C1" id="C1" onclick="buttonEvent(this.id)">C1</button>
             <button class="button C2" id="C2" onclick="buttonEvent(this.id)">C2</button>
             <button class="button C3" id="C3" onclick="buttonEvent(this.id)">C3</button>
+            <svg width="400" height="400"><line x1="0%" y1="0%" x2="100%" y2="100%" stroke="black"/></svg>
+            <svg width="400" height="400"><line x1="100%" y1="0%" x2="0%" y2="100%" stroke="black"/></svg>
+            <svg width="400" height="400"><line x1="50%" y1="0%" x2="50%" y2="100%" stroke="black"/></svg>
+            <svg width="400" height="400"><line x1="0%" y1="50%" x2="100%" y2="50%" stroke="black"/></svg>
         </div>
     </div>
     
-
     <script src="script.js"></script>
 </body>
 </html>

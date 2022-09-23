@@ -1,8 +1,12 @@
 .main-div {
     position: relative;
-    border: black 2px solid;
+    /* border: black 2px solid; */
     height: 400px;
     width: 400px;
+}
+
+.main-div button {
+    font-size: 16px;
 }
 
 .A1 {
@@ -53,7 +57,6 @@
     bottom: 0%;
     left: 50%;
     transform: translate(-50%, 0%);
-
 }
 
 .C3 {
@@ -64,4 +67,8 @@
 
 .button {
     cursor: pointer;
+}
+
+svg {position: absolute;
+    z-index: -1;
 }

@@ -73,27 +73,22 @@ function moveItem(id) {
     if (indexCheck.includes(selectedItem) && !colorList.includes(id)) {
         if(player) {
             document.getElementById(id).style.backgroundColor="#0066ff";
-            colorBlue = []
-            colorBlue.forEach((item => {
-                if(item != selectedItem) {colorBlue.push(item)}
-            }))
+            colorBlue = colorBlue.filter((item)=> {
+                return item != selectedItem
+            })
             colorBlue.push(id)
             setTimeout(gameOver,50,colorBlue)
         } else {
             document.getElementById(id).style.backgroundColor="#00cc00";
-            colorGreen = []
-            colorGreen.forEach((item => {
-                if(item != selectedItem) {colorGreen.push(item)}
-            }))
+            colorGreen = colorGreen.filter((item)=> {
+                return item != selectedItem
+            })
             colorGreen.push(id)
             setTimeout(gameOver,50,colorGreen)
         }
-        colorList = []
-        colorList.forEach((item => {
-            if(item != selectedItem) {colorList.push(item)}
-        }))
-        // console.log(colorList)
-        // selectedItem = '';
+        colorList = colorList.filter((item)=> {
+            return item != selectedItem
+        })
         colorList.push(id)
         player = !player
         indexCheck = [];
