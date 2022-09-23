@@ -4,7 +4,10 @@ var colorGreen = [];
 var colorList = [];
 answerList = [['A1','A2','A3'],['B1','B2','B3'],['C1','C2','C3'],['A1','B1','C1'],['A2','B2','C2'],['A3','B3','C3'],['A1','B2','C3'],['C1','B2','A3']]
 // var countColor = 1;
+const indexList = [['A1','A2','A3'],['B1','B2','B3'],['C1','C2','C3']]
+
 var selectedItem = '';
+var indexCheck = [];
 var player = true;
 
 
@@ -26,7 +29,7 @@ function buttonEvent(id) {
             document.getElementById(id).style.backgroundColor="#ff0000";
           }
 
-        } else if ((selectedItem = id)) {
+        } else if (id == selectedItem) {
             if (player) {
                 selectedItem = "";
                 document.getElementById(id).style.backgroundColor = "#0066ff";
@@ -36,14 +39,69 @@ function buttonEvent(id) {
             }
 
         } else {
-          moveItem();
+            moveItem(id);
         }
     }
 }
 
-//check moving items & validate it goes to empty space and next element
-function moveItem() {
-
+//take index of moving item & validate it goes to empty space and next element
+function moveItem(id) {
+    indexList.forEach((item, index) => {
+        if (item.indexOf(id) != '-1') {
+            var indexItem = item.indexOf(id)
+            checkEmptyElt(index, indexItem, id)
+        }
+    })
+    function checkEmptyElt(indexId, indexItem, id) {
+        if(id == 'B2') {
+            for (var j=indexId-1; j <= indexId+1; j++) {
+                if (indexList[j] != undefined) {
+                  for (var i = indexItem - 1; i <= indexItem + 1; i++) {
+                    indexCheck.push(indexList[j][i]);
+                  }
+                }
+            }
+        } else {
+            for (var j=indexId-1; j <= indexId+1; j++) {
+                if (indexList[j] != undefined) {indexCheck.push(indexList[j][indexItem]);}
+            }
+            for (var i = indexItem - 1; i <= indexItem + 1; i++) {
+                indexCheck.push(indexList[indexId][i]);
+            }
+        }
+    }
+    if (indexCheck.includes(selectedItem) && !colorList.includes(id)) {
+        if(player) {
+            document.getElementById(id).style.backgroundColor="#0066ff";
+            colorBlue = []
+            colorBlue.forEach((item => {
+                if(item != selectedItem) {colorBlue.push(item)}
+            }))
+            colorBlue.push(id)
+            setTimeout(gameOver,50,colorBlue)
+        } else {
+            document.getElementById(id).style.backgroundColor="#00cc00";
+            colorGreen = []
+            colorGreen.forEach((item => {
+                if(item != selectedItem) {colorGreen.push(item)}
+            }))
+            colorGreen.push(id)
+            setTimeout(gameOver,50,colorGreen)
+        }
+        colorList = []
+        colorList.forEach((item => {
+            if(item != selectedItem) {colorList.push(item)}
+        }))
+        // console.log(colorList)
+        // selectedItem = '';
+        colorList.push(id)
+        player = !player
+        indexCheck = [];
+        document.getElementById(selectedItem).style.backgroundColor="#fff";
+        selectedItem = '';
+    } else {
+        alert('this is not a nearest empty position')
+    }
 }
 
 //what happens when first three clicks on 2 players
