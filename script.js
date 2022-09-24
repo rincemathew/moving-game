@@ -53,7 +53,8 @@ function moveItem(id) {
         }
     })
     function checkEmptyElt(indexId, indexItem, id) {
-        if(id == 'B2') {
+        console.log(id)
+        if(id == 'B2' || selectedItem == 'B2') {
             for (var j=indexId-1; j <= indexId+1; j++) {
                 if (indexList[j] != undefined) {
                   for (var i = indexItem - 1; i <= indexItem + 1; i++) {
